@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eou pipefail
 
 IMAGE_BASE_NAME=dcasati/myk8sblog # change this line to reflect your repo
