@@ -5,7 +5,7 @@ metadata:
   name: myk8sblog
   namespace: myk8sblog
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 1
