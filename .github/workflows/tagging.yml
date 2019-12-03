@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on: 
+  push:
+    paths:
+    - app/**
+    branches:
+    - master
+env:
+  IMAGE_NAME: dcasati/dcasati.net
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Build the Docker image
+      run: docker build --tag $IMAGE_NAME:$(git log -1 --format=%h) ./app
+    - uses: azure/docker-login@v1
+      with:
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker push $IMAGE_NAME:$(git log -1 --format=%h)

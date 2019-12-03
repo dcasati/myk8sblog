@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="posts">
+	<div class="post">
+		<h1 class="post-title">
+			Tags
+		</h1>
+		{{ with .Site.Taxonomies.tags }}
+		<section class="post-tags">
+			{{ range $name, $value := . }}
+			<span>
+				#<a href="{{ (urlize (printf "tags/%s/" $name)) | absLangURL }}">{{ $name }}</a>
+				<small>({{ .Count }})</small>
+			</span>
+			{{ end }}
+		</section>
+		{{ end }}
+	</div>
+	{{ partial "swipe-section" . }}
+</div>
+{{ end }}

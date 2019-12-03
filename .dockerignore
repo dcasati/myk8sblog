@@ -1,0 +1,4 @@
+public/
+.git/
+.gitmodules/
+.gitignore
